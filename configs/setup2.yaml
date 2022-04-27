@@ -32,7 +32,7 @@ Paths:
 CPAB:
     Device: "cpu"
     Modeflag: "1D"
-    Window_grid: 6 #55 #55 #15 #500 #200 for 2D
+    Window_grid: 15 #55 #55 #15 #500 #200 for 2D
     Channels: 4
     Interpolation_type: "GP"
 Optimization:

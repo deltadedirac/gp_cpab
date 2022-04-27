@@ -52,8 +52,8 @@ class gp_interpolation:
             #self.lower_train,self.upper_train =  trans_data_train.confidence_region()
             sampled_data = trans_data.rsample().unsqueeze(0).flatten()
 
-        gc.collect()
-        torch.cuda.empty_cache()
+        #gc.collect()
+        #torch.cuda.empty_cache()
          # Reshape
         new_data = torch.reshape(cc, (n_batch, out_width, n_channels))
         sampled_data = torch.reshape(sampled_data, (n_batch, out_width, n_channels))
