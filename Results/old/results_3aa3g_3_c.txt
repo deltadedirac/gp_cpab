@@ -1,0 +1,2461 @@
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.10297016e-17	1.0	0.0
+0.0	0.4911447	0.50885534	0.0
+0.0	0.5978964	0.4021036	0.0
+0.0	0.99909484	0.00090515614	0.0
+0.0	0.695577	0.0	0.30442297
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.003531307	0.98940617	0.003531307	0.003531307
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.024546012	0.92636204	0.024546012	0.024546012
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.10297016e-17	1.0	0.0
+0.0	0.4911447	0.50885534	0.0
+0.0	0.5978964	0.4021036	0.0
+0.0	0.99909484	0.00090515614	0.0
+0.0	0.695577	0.0	0.30442297
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.003531307	0.98940617	0.003531307	0.003531307
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00064218044	0.9980735	0.00064218044	0.00064218044
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.10297016e-17	1.0	0.0
+0.0	0.4911447	0.50885534	0.0
+0.0	0.5978964	0.4021036	0.0
+0.0	0.99909484	0.00090515614	0.0
+0.0	0.695577	0.0	0.30442297
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.003531307	0.98940617	0.003531307	0.003531307
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.0010947883	0.99671566	0.0010947883	0.0010947883
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.10297016e-17	1.0	0.0
+0.0	0.4911447	0.50885534	0.0
+0.0	0.5978964	0.4021036	0.0
+0.0	0.99909484	0.00090515614	0.0
+0.0	0.695577	0.0	0.30442297
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.003531307	0.98940617	0.003531307	0.003531307
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.009217784	0.97234666	0.009217784	0.009217784
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.10297016e-17	1.0	0.0
+0.0	0.4911447	0.50885534	0.0
+0.0	0.5978964	0.4021036	0.0
+0.0	0.99909484	0.00090515614	0.0
+0.0	0.695577	0.0	0.30442297
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.003531307	0.98940617	0.003531307	0.003531307
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.006148711	0.981554	0.006148711	0.006148711
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	5.560201e-17	1.0	0.0
+0.0	0.34559736	0.6544026	0.0
+0.0	0.71527016	0.28472984	0.0
+0.0	0.9997342	0.0002657771	0.0
+0.0	0.37437296	0.0	0.62562704
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.27751005	0.43657058	0.27751005	0.27751005
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.0047599673	0.9903358	0.0047599673	0.0047599673
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 30
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.3504801	0.6495199	0.0
+0.0	0.7064084	0.29359162	0.0
+0.0	0.9998225	0.0	0.00017750263
+0.0	0.71714413	0.0	0.28285587
+0.0	1.180172e-05	0.0	0.9999882
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.28913513	0.41296813	0.28913513	0.28913513
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00020039082	0.00020039082	0.00020039082	0.99959314
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.0023006499	0.995329	0.0023006499	0.0023006499
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	3.8213984e-17	1.0	0.0
+0.0	0.4706705	0.52932954	0.0
+0.0	0.7056273	0.29437268	0.0
+0.0	0.9992677	0.00073230267	0.0
+0.0	0.52412343	0.0	0.47587657
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.16523656	0.66451967	0.16523656	0.16523656
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00047799945	0.9990295	0.00047799945	0.00047799945
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	3.8213984e-17	1.0	0.0
+0.0	0.4706705	0.52932954	0.0
+0.0	0.7056273	0.29437268	0.0
+0.0	0.9992677	0.00073230267	0.0
+0.0	0.52412343	0.0	0.47587657
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.16523656	0.66451967	0.16523656	0.16523656
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.013774395	0.97203386	0.013774395	0.013774395
+0.33	0.33	0.33	0.33
+0.00020039082	0.00020039082	0.00020039082	0.99959314
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	3.8213984e-17	1.0	0.0
+0.0	0.4706705	0.52932954	0.0
+0.0	0.7056273	0.29437268	0.0
+0.0	0.9992677	0.00073230267	0.0
+0.0	0.52412343	0.0	0.47587657
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.16523656	0.66451967	0.16523656	0.16523656
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.0024268627	0.9950727	0.0024268627	0.0024268627
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	3.8213984e-17	1.0	0.0
+0.0	0.4706705	0.52932954	0.0
+0.0	0.7056273	0.29437268	0.0
+0.0	0.9992677	0.00073230267	0.0
+0.0	0.52412343	0.0	0.47587657
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.16523656	0.66451967	0.16523656	0.16523656
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.0087406635	0.9822538	0.0087406635	0.0087406635
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.07783925e-17	1.0	0.0
+0.0	0.5429092	0.4570908	0.0
+0.0	0.6807015	0.3192985	0.0
+0.0	0.99987316	0.00012683868	0.0
+0.0	0.63742924	0.0	0.36257076
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.093631595	0.80989945	0.093631595	0.093631595
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.0561309e-16	1.0	0.0
+0.0	0.16421929	0.83578074	0.0
+0.0	0.7268925	0.27310753	0.0
+0.0	0.9995216	0.0	0.00047838688
+0.0	0.6340107	0.0	0.36598933
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.31839523	0.35356125	0.31839523	0.31839523
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.13753529	0.8624647	0.0
+0.0	0.71830004	0.28169996	0.0
+0.0	0.9993254	0.00067460537	0.0
+0.0	0.6899177	0.0	0.31008232
+0.0	1.180172e-05	0.0	0.9999882
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.32956275	0.3308878	0.32956275	0.32956275
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00020039082	0.00020039082	0.00020039082	0.99959314
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.4262027	0.5737973	0.0
+0.0	0.65426296	0.34573704	0.0
+0.0	0.99927926	0.0	0.00072073936
+0.0	0.5418663	0.0	0.4581337
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.026654929	0.9458823	0.026654929	0.026654929
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	5.3366183e-17	1.0	0.0
+0.0	0.27384442	0.7261556	0.0
+0.0	0.71665484	0.28334516	0.0
+0.0	0.99877036	0.0	0.0012296438
+0.0	0.48793232	0.0	0.5120677
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.3163793	0.35765415	0.3163793	0.3163793
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.3912696e-16	1.0	0.0
+0.0	0.25737667	0.7426233	0.0
+0.0	0.6092894	0.3907106	0.0
+0.0	0.9997002	0.00029981136	0.0
+0.0	0.43714976	0.0	0.56285024
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.0019504428	0.99604	0.0019504428	0.0019504428
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.34534016	0.65465987	0.0
+0.0	0.6112289	0.38877112	0.0
+0.0	0.9996541	0.00034588575	0.0
+0.0	0.34836936	0.0	0.65163064
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.20982002	0.5740018	0.20982002	0.20982002
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.5638346e-16	1.0	0.0
+0.0	0.43805063	0.5619494	0.0
+0.0	0.7161404	0.2838596	0.0
+0.0	0.99950504	0.00049495697	0.0
+0.0	0.5707979	0.0	0.42920208
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.21393141	0.5656544	0.21393141	0.21393141
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.13864984	0.8613502	0.0
+0.0	0.6899562	0.3100438	0.0
+0.0	0.9997365	0.00026351213	0.0
+0.0	0.36973715	0.0	0.63026285
+0.0	5.9604645e-06	0.0	0.99999404
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.32513866	0.33987004	0.32513866	0.32513866
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.08779836e-16	1.0	0.0
+0.0	0.41214633	0.58785367	0.0
+0.0	0.7057002	0.29429978	0.0
+0.0	0.9995768	0.00042319298	0.0
+0.0	0.8562846	0.0	0.14371538
+0.0	1.692772e-05	0.0	0.9999831
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.32349363	0.34320995	0.32349363	0.32349363
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	1.8841085e-17	1.0	0.0
+0.0	0.16981433	0.83018565	0.0
+0.0	0.5454467	0.4545533	0.0
+0.0	0.99919844	0.0	0.00080156326
+0.0	0.37685847	0.0	0.6231415
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.054760188	0.8888202	0.054760188	0.054760188
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.041176468	0.91639924	0.041176468	0.041176468
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.33
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 15
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 2000
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.17970079	0.8202992	0.0
+0.0	0.7139578	0.2860422	0.0
+0.0	0.99963486	0.00036513805	0.0
+0.0	0.6898999	0.0	0.31010008
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.3282843	0.33348346	0.3282843	0.3282843
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00019031763	0.00019031763	0.99961364	0.00019031763
+0.33	0.33	0.33	0.33
+0.33	0.33	0.33	0.33
+0.0001912415	0.99961174	0.0001912415	0.0001912415
+0.33	0.33	0.33	0.33
+0.00019031763	0.00019031763	0.00019031763	0.99961364
+
+
+

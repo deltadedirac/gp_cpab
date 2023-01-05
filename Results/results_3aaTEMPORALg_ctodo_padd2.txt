@@ -1,0 +1,880 @@
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathOrig2: ../data/orig_2aa.fasta
+    PathOrig4: ../data/orig_4aa.fasta
+    PathMSAref_t2: ../data/ref_2aa.aln
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref2c: ../data/ref_3aa2g_c.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref4t: ../data/ref_4aa.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 4
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 500
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Original Grid
+tensor([[[0.0000, 0.5000, 1.0000]]])
+
+Grid to Transform
+tensor([[[0.0000, 0.3333, 0.6667, 1.0000]]])
+
+Grid Transform with theta estimated by LI
+tensor([[[-0.1263,  0.3148,  1.0216]]], grad_fn=<PermuteBackward>)
+
+Grid Transform with theta estimated by GP
+tensor([[[-4.3563e-05,  4.9892e-01,  9.9993e-01]]], grad_fn=<PermuteBackward>)
+
+Optimal Theta by using Linear Case - Standard CPAB
+tensor([[-0.1773,  0.3269, -0.3489,  0.4863, -0.5957]], requires_grad=True)
+
+Optimal Theta by using GP Case - GP CPAB
+tensor([[-5.5942e-03,  5.1583e-03, -1.4619e-03, -2.9891e-04, -6.3820e-05]],
+       requires_grad=True)
+
+Loss Linear - Linear
+tensor(0.2444, grad_fn=<MeanBackward0>)
+
+Loss Linear - GP
+tensor(0.3311, grad_fn=<MeanBackward0>)
+
+Loss GP - GP
+tensor(0.2663, grad_fn=<MeanBackward0>)
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.33277068	0.6672293	0.0
+0.0	0.9949707	0.0050293207	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.2498094	0.2498094	0.25057182	0.2498094
+0.035837635	0.8924871	0.035837635	0.035837635
+0.25	0.25	0.25	0.25
+0.047564864	0.047564864	0.047564864	0.85730547
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.24999891	0.25000328	0.24999891	0.24999891
+0.24999921	0.25000238	0.24999921	0.24999921
+0.00014610589	0.00014610589	0.00014610589	0.9995617
+
+
+
+
+
+INITIALIZING WITH #theta_ref = torch.autograd.Variable(torch.tensor([[0.3,-0.0011522,-0.0018782, -0.2456, 0.3125]], requires_grad=True), requires_grad=True)
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathOrig2: ../data/orig_2aa.fasta
+    PathOrig4: ../data/orig_4aa.fasta
+    PathMSAref_t2: ../data/ref_2aa.aln
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref2c: ../data/ref_3aa2g_c.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref4t: ../data/ref_4aa.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 4
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 500
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Original Grid
+tensor([[[0.0000, 0.5000, 1.0000]]])
+
+Grid to Transform
+tensor([[[0.0000, 0.3333, 0.6667, 1.0000]]])
+
+Grid Transform with theta estimated by LI
+tensor([[[-0.1845,  0.3102,  1.0295]]], grad_fn=<PermuteBackward>)
+
+Grid Transform with theta estimated by GP
+tensor([[[-2.6608e-07,  6.6666e-01,  1.0000e+00]]], grad_fn=<PermuteBackward>)
+
+Optimal Theta by using Linear Case - Standard CPAB
+tensor([[-0.0387,  0.3418, -0.4804,  0.4879, -0.5475]], requires_grad=True)
+
+Optimal Theta by using GP Case - GP CPAB
+tensor([[ 0.4336, -0.3217, -0.0090, -0.4256,  0.7682]], requires_grad=True)
+
+Loss Linear - Linear
+tensor(0.2445, grad_fn=<MeanBackward0>)
+
+Loss Linear - GP
+tensor(0.3341, grad_fn=<MeanBackward0>)
+
+Loss GP - GP
+tensor(0.2261, grad_fn=<MeanBackward0>)
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+
+GAP  L  Q   R
+0.0	0.0	1.0	0.0
+0.0	0.319177	0.68082297	0.0
+0.0	0.9944608	0.005539179	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.24999994	0.24999994	0.25000018	0.24999994
+0.053722307	0.83883315	0.053722307	0.053722307
+0.25	0.25	0.25	0.25
+0.08089265	0.08089265	0.08089265	0.7573221
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.00014419854	0.9995675	0.00014419854	0.00014419854
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathOrig2: ../data/orig_2aa.fasta
+    PathOrig4: ../data/orig_4aa.fasta
+    PathMSAref_t2: ../data/ref_2aa.aln
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref2c: ../data/ref_3aa2g_c.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref4t: ../data/ref_4aa.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 4
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 500
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Original Grid
+tensor([[[0.0000, 0.5000, 1.0000]]])
+
+Grid to Transform
+tensor([[[0.0000, 0.2000, 0.4000, 0.6000, 0.8000, 1.0000]]])
+
+Grid Transform with theta estimated by LI
+tensor([[[-0.0734,  0.3907,  1.0273]]], grad_fn=<PermuteBackward>)
+
+Grid Transform with theta estimated by GP
+tensor([[[-1.7886e-04,  4.9867e-01,  9.9964e-01]]], grad_fn=<PermuteBackward>)
+
+Optimal Theta by using Linear Case - Standard CPAB
+tensor([[-0.0976,  0.2522, -0.2291,  0.2731, -0.3308]], requires_grad=True)
+
+Optimal Theta by using GP Case - GP CPAB
+tensor([[-0.0051,  0.0050, -0.0016, -0.0006, -0.0008]], requires_grad=True)
+
+Loss Linear - Linear
+tensor(0.3025, grad_fn=<MeanBackward0>)
+
+Loss Linear - GP
+tensor(0.3478, grad_fn=<MeanBackward0>)
+
+Loss GP - GP
+tensor(0.2931, grad_fn=<MeanBackward0>)
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.22415683	0.77584314	0.0
+0.0	0.5955417	0.40445828	0.0
+0.0	0.9979782	0.0020217896	0.0
+0.0	0.48952425	0.0	0.51047575
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.24970217	0.24970217	0.2508935	0.24970217
+0.25	0.25	0.25	0.25
+0.025631353	0.923106	0.025631353	0.025631353
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.15179309	0.15179309	0.15179309	0.54462075
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00015181303	0.00015181303	0.9995446	0.00015181303
+0.25	0.25	0.25	0.25
+0.2499987	0.2500039	0.2499987	0.2499987
+0.24999933	0.250002	0.24999933	0.24999933
+0.25	0.25	0.25	0.25
+0.0001823008	0.0001823008	0.0001823008	0.9994531
+
+
+
+INITIALIZING WITH #theta_ref = torch.autograd.Variable(torch.tensor([[0.3,-0.0011522,-0.0018782, -0.2456, 0.3125]], requires_grad=True), requires_grad=True)
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathOrig2: ../data/orig_2aa.fasta
+    PathOrig4: ../data/orig_4aa.fasta
+    PathMSAref_t2: ../data/ref_2aa.aln
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref2c: ../data/ref_3aa2g_c.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref4t: ../data/ref_4aa.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 4
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 500
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Original Grid
+tensor([[[0.0000, 0.5000, 1.0000]]])
+
+Grid to Transform
+tensor([[[0.0000, 0.2000, 0.4000, 0.6000, 0.8000, 1.0000]]])
+
+Grid Transform with theta estimated by LI
+tensor([[[-0.1178,  0.3889,  1.0226]]], grad_fn=<PermuteBackward>)
+
+Grid Transform with theta estimated by GP
+tensor([[[3.7662e-06, 6.0000e-01, 1.0000e+00]]], grad_fn=<PermuteBackward>)
+
+Optimal Theta by using Linear Case - Standard CPAB
+tensor([[ 0.0626,  0.3114, -0.3597,  0.1838, -0.2374]], requires_grad=True)
+
+Optimal Theta by using GP Case - GP CPAB
+tensor([[ 0.3349, -0.1390, -0.0334, -0.3048,  0.4521]], requires_grad=True)
+
+Loss Linear - Linear
+tensor(0.3027, grad_fn=<MeanBackward0>)
+
+Loss Linear - GP
+tensor(0.3434, grad_fn=<MeanBackward0>)
+
+Loss GP - GP
+tensor(0.2663, grad_fn=<MeanBackward0>)
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.20532899	0.794671	0.0
+0.0	0.60050637	0.39949363	0.0
+0.0	0.9997097	0.00029027462	0.0
+0.0	0.45093513	0.0	0.5490649
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.25	0.25	0.25000003	0.25
+0.25	0.25	0.25	0.25
+0.035889506	0.89233154	0.035889506	0.035889506
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.118089914	0.118089914	0.118089914	0.6457303
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014442205	0.9995668	0.00014442205	0.00014442205
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathOrig2: ../data/orig_2aa.fasta
+    PathOrig4: ../data/orig_4aa.fasta
+    PathMSAref_t2: ../data/ref_2aa.aln
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref2c: ../data/ref_3aa2g_c.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref4t: ../data/ref_4aa.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 4
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 500
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Original Grid
+tensor([[[0.0000, 0.5000, 1.0000]]])
+
+Grid to Transform
+tensor([[[0.0000, 0.1667, 0.3333, 0.5000, 0.6667, 0.8333, 1.0000]]])
+
+Grid Transform with theta estimated by LI
+tensor([[[-0.0167,  0.4947,  1.0057]]], grad_fn=<PermuteBackward>)
+
+Grid Transform with theta estimated by GP
+tensor([[[-2.4031e-06,  5.0000e-01,  1.0000e+00]]], grad_fn=<PermuteBackward>)
+
+Optimal Theta by using Linear Case - Standard CPAB
+tensor([[ 0.0101,  0.0029, -0.0409,  0.0356, -0.0020]], requires_grad=True)
+
+Optimal Theta by using GP Case - GP CPAB
+tensor([[-0.0001,  0.0003, -0.0002, -0.0003,  0.0004]], requires_grad=True)
+
+Loss Linear - Linear
+tensor(0.3194, grad_fn=<MeanBackward0>)
+
+Loss Linear - GP
+tensor(0.2878, grad_fn=<MeanBackward0>)
+
+Loss GP - GP
+tensor(0.2778, grad_fn=<MeanBackward0>)
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.30999777	0.6900022	0.0
+0.0	0.6510561	0.3489439	0.0
+0.0	0.9894677	0.01053232	0.0
+0.0	0.67055273	0.0	0.32944727
+0.0	0.3299204	0.0	0.6700796
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.098916575	0.098916575	0.7032503	0.098916575
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.012310386	0.9630689	0.012310386	0.012310386
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.014291614	0.014291614	0.014291614	0.9571252
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014419854	0.9995675	0.00014419854	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00015181303	0.00015181303	0.00015181303	0.9995446
+
+
+
+appName: gp_cpab
+logLevel: WARN
+GPSetup:
+    Option: multitask
+    Tasks: 4
+    Initialization: 0.25
+    Lengthscale: 0.1
+    noise_constraint: [0, 0.0004]
+Paths:
+    PathOrig: ../data/orig_3aa.fasta
+    PathOrig2: ../data/orig_2aa.fasta
+    PathOrig4: ../data/orig_4aa.fasta
+    PathMSAref_t2: ../data/ref_2aa.aln
+    PathMSAref: ../data/ref_3aa.aln
+    PathMSAref2: ../data/ref_3aa2g.aln
+    PathMSAref2b: ../data/ref_3aa2g_b.aln
+    PathMSAref2c: ../data/ref_3aa2g_c.aln
+    PathMSAref3: ../data/ref_3aa3g.aln
+    PathMSAref3b: ../data/ref_3aa3g_b.aln
+    PathMSAref4: ../data/ref_3aa4g.aln
+    PathMSAref4t: ../data/ref_4aa.aln
+    PathMSAref9: ../data/ref_3aa10g.aln
+    Path_Preexist_Model: ../models/CPABdeformGPB3.pth
+    Path_Preexist_Modellinear: ../models/CPABlinear.pth
+    Path_Preexist_Modellinear2: ../models/CPABlinear2.pth
+    Path_Preexist_Modellinear3: ../models/CPABlinear3.pth
+    Path_Preexist_Modellinear4: ../models/CPABlinear4.pth
+    Path_Preexist_Modellinear9: ../models/CPABlinear9.pth
+    Path_Preexist_ModelGP: ../models/CPABGPB.pth
+    Path_Preexist_ModelGP2: ../models/CPABGPB2.pth
+    Path_Preexist_ModelGP3: ../models/CPABGPB3.pth
+    Path_Preexist_ModelGP4: ../models/CPABGPB4.pth
+    Path_Preexist_ModelGP9: ../models/CPABGPB9.pth
+    Path_Preexist_Likelihood: ../models/CPABdeform_likelihoodGPB3.pth
+    Path_Automated_ReportFolder: ../Results
+CPAB:
+    Device: cpu
+    Modeflag: 1D
+    Window_grid: 4
+    Channels: 4
+    Interpolation_type: GP
+Optimization:
+    lr: 0.01
+    weight_decay: 0.0004
+    maxiter: 500
+    LossFunctMetric: CEmask
+LogosPlot:
+    Scalefactor: 10
+    Mode: see_train
+
+
+Alphabet
+['-', 'L', 'Q', 'R']
+
+Char to int dictionary
+{'-': 0, 'L': 1, 'Q': 2, 'R': 3}
+
+Char to int dictionary
+{'0': '-', '1': 'L', '2': 'Q', '3': 'R'}
+
+Original Grid
+tensor([[[0.0000, 0.5000, 1.0000]]])
+
+Grid to Transform
+tensor([[[0.0000, 0.0833, 0.1667, 0.2500, 0.3333, 0.4167, 0.5000, 0.5833,
+          0.6667, 0.7500, 0.8333, 0.9167, 1.0000]]])
+
+Grid Transform with theta estimated by LI
+tensor([[[-0.0167,  0.4947,  1.0057]]], grad_fn=<PermuteBackward>)
+
+Grid Transform with theta estimated by GP
+tensor([[[7.2352e-06, 5.0001e-01, 1.0000e+00]]], grad_fn=<PermuteBackward>)
+
+Optimal Theta by using Linear Case - Standard CPAB
+tensor([[ 0.0101,  0.0029, -0.0409,  0.0356, -0.0020]], requires_grad=True)
+
+Optimal Theta by using GP Case - GP CPAB
+tensor([[-0.0001,  0.0003, -0.0001, -0.0003,  0.0003]], requires_grad=True)
+
+Loss Linear - Linear
+tensor(0.3671, grad_fn=<MeanBackward0>)
+
+Loss Linear - GP
+tensor(0.3241, grad_fn=<MeanBackward0>)
+
+Loss GP - GP
+tensor(0.3095, grad_fn=<MeanBackward0>)
+
+Reference Sequence in One Hot Encoding
+
+0.0	0.0	1.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	1.0	0.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+1.0	0.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Raw Data
+
+0.0	0.0	1.0	0.0
+0.0	1.0	0.0	0.0
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using LI and theta optimized with LI
+
+0.0	0.0	1.0	0.0
+0.0	0.13828148	0.86171854	0.0
+0.0	0.30999777	0.6900022	0.0
+0.0	0.48171395	0.51828605	0.0
+0.0	0.6510561	0.3489439	0.0
+0.0	0.82026184	0.17973816	0.0
+0.0	0.9894677	0.01053232	0.0
+0.0	0.84055173	0.0	0.15944827
+0.0	0.67055273	0.0	0.32944727
+0.0	0.5005541	0.0	0.49944592
+0.0	0.3299204	0.0	0.6700796
+0.0	0.15927088	0.0	0.8407291
+0.0	0.0	0.0	1.0
+
+
+
+Transformed data using GP and theta optimized with LI
+
+0.21659595	0.21659595	0.35021213	0.21659595
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.045368537	0.86389446	0.045368537	0.045368537
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.05215469	0.05215469	0.05215469	0.843536
+
+
+
+Transformed data using GP and theta optimized with GP
+
+0.00014419854	0.00014419854	0.9995675	0.00014419854
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014434755	0.99956703	0.00014434755	0.00014434755
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.25	0.25	0.25	0.25
+0.00014419854	0.00014419854	0.00014419854	0.9995675
+
+
+__________________________________________________________________
+__________________________________________________________________
+__________________________________________________________________
+
+FROM HERE TO COMPARE
+
+__________________________________________________________________
+__________________________________________________________________
+__________________________________________________________________
+
+
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+------------------------------------------------------------------
+
+FROM HERE WE START USING THE INVERSE CPAB TRANSFORMATION
+
+

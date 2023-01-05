@@ -1,0 +1,58 @@
+appName: gp_cpab
+logLevel: WARN
+
+GPSetup:
+    Option: "multitask"
+    Tasks: 4 #4 #4
+    Initialization: 0.25 #0.33 #0.25
+    Lengthscale: 0.1 # 0.1
+    noise_constraint: [0,0.0004]
+Paths:
+    PathOrig: "../../data/orig_3aa.fasta"
+    PathOrig2: "../../data/orig_2aa.fasta"
+    PathOrig4: "../../data/orig_4aa.fasta"
+    PathMSAref_t2: "../../data/ref_2aa.aln"
+    PathMSAref: "../../data/ref_3aa.aln"
+    PathMSAref2: "../../data/ref_3aa2g.aln"
+    PathMSAref2b: "../../data/ref_3aa2g_b.aln"
+    PathMSAref2c: "../../data/ref_3aa2g_c.aln"
+    PathMSAref3: "../../data/ref_3aa3g.aln"
+    PathMSAref3b: "../../data/ref_3aa3g_b.aln"
+    PathMSAref4: "../../data/ref_3aa4g.aln"
+    PathMSAref4t: "../../data/ref_4aa.aln"
+    PathMSAref9: "../../data/ref_3aa10g.aln"
+    Path_Preexist_Model: "../../models/CPABdeformGPB3.pth"
+    Path_Preexist_Modellinear: "../../models/CPABlinear.pth"
+    Path_Preexist_Modellinear2: "../../models/CPABlinear2.pth"
+    Path_Preexist_Modellinear3: "../../models/CPABlinear3.pth"
+    Path_Preexist_Modellinear4: "../../models/CPABlinear4.pth"
+    Path_Preexist_Modellinear9: "../../models/CPABlinear9.pth"
+    Path_Preexist_ModelGP: "../../models/CPABGPB.pth"
+    Path_Preexist_ModelGP2: "../../models/CPABGPB2.pth"
+    Path_Preexist_ModelGP3: "../../models/CPABGPB3.pth"
+    Path_Preexist_ModelGP4: "../../models/CPABGPB4.pth"
+    Path_Preexist_ModelGP9: "../../models/CPABGPB9.pth"
+    Path_Preexist_Modellinear_equal_inp_target1: "../../models/CPABGlinear_same_inp_target1.pth" # when no padding, no initialization *****fine
+    Path_Preexist_Modellinear_equal_inp_target2: "../../models/CPABlinear_same_inp_target2.pth" # when padding, no initialization *****fine
+    Path_Preexist_Modellinear_equal_inp_target3: "../../models/CPABlinear_same_inp_target3.pth" # when padding, initialization
+    Path_Preexist_ModelGP_equal_inp_target1: "../../models/CPABGPB_same_inp_target1.pth"
+    Path_Preexist_ModelGP_equal_inp_target2: "../../models/CPABGPB_same_inp_target2.pth"
+    Path_Preexist_ModelGP_equal_inp_target3: "../../models/CPABGPB_same_inp_target3.pth"
+    Path_Preexist_Modellinear_experiment5: "../../models/CPABGlinear_Experiment5.pth"
+    Path_Preexist_ModelGP_experiment5: "../../models/CPABGPB_Experiment5.pth"
+    Path_Preexist_Likelihood: "../../models/CPABdeform_likelihoodGPB3.pth"
+    Path_Automated_ReportFolder: "../../Results"
+CPAB:
+    Device: "cpu"
+    Modeflag: "1D"
+    Window_grid: 6 #15 #4 #55 #15 #500 #200 for 2D
+    Channels: 4 #4 #4
+    Interpolation_type: "GP"
+Optimization:
+    lr: 0.01 #0.01
+    weight_decay: 0.0004
+    maxiter: 500
+    LossFunctMetric: "CEmask"
+LogosPlot:
+    Scalefactor: 10
+    Mode: "see_train"
