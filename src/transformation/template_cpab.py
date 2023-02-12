@@ -31,7 +31,6 @@ class template_cpab(Cpab):
                                     volume_perservation=volume_perservation, override=override)
 
         self.config = config
-        #self.interpolation_type = config.parserinfo('*/Interpolation_type')
 
 
 
@@ -88,27 +87,6 @@ class template_cpab(Cpab):
         samples = self.sample_transformation(n_sample, mean=mean, cov=torch.diag(S))
         return samples
 
-    '''
-        #%%    
-    def uniform_meshgrid(self, n_points, **kargs):
-        """ Constructs a meshgrid 
-        Arguments:
-            n_points: list, number of points in each dimension
-        Output:
-            grid: [ndim, nP] matrix of points, where nP = product(n_points)
-        """
-        if 'padding weights' in kargs:
-            lin = [torch.linspace(self.params.domain_min[i], self.params.domain_min[i], n_points[i], 
-                          device=self.device) for i in range(self.params.ndim)]
-            mesh = torch.meshgrid(lin[::-1])
-            grid = torch.cat([g.reshape(1,-1) for g in mesh[::-1]], dim=0)
-            return grid
-        else:
-            return self.backend.uniform_meshgrid(self.params.ndim,
-                                             self.params.domain_min,
-                                             self.params.domain_max,
-                                             n_points, self.device)
-    '''
 
     def determine_trans_dim(self, *args):
         '''
