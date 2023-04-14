@@ -24,7 +24,12 @@ def expm(A):
     U, V = pade13(Ascaled)
     P = U + V
     Q = -U + V
-    R, _ = torch.solve(P, Q) # solve P = Q*R
+    ''' This line of code had to be change because the previous "torch.solve in expm.py" 
+        is completely deprecated and unsuported for version 2.0 (just works up to 1.8 version), 
+        besides this last one is not suported by macOS'''
+    R = torch.linalg.solve(P, Q) # solve P = Q*R
+
+    #R, _ = torch.linalg.solve(P, Q) # solve P = Q*R
     
     # Unsquaring step    
     n = n_squarings.max()

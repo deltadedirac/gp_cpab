@@ -27,7 +27,7 @@ class template_cpab(Cpab):
                         device = 'cpu', zero_boundary = True, 
                         volume_perservation = False, override = False):
 
-        super().__init__(tess_size, backend=backend, device=device, zero_boundary=zero_boundary, 
+        super().__init__(tess_size, backend=backend, device='cpu', zero_boundary=zero_boundary, 
                                     volume_perservation=volume_perservation, override=override)
 
         self.config = config
@@ -111,6 +111,69 @@ class template_cpab(Cpab):
             forw=[0,3,1,2]; rev=[0,2,3,1] #=> height, width
 
         return forw,rev,outsize
+    
+    def uniform_meshgrid(self, n_points):
+        """ Constructs a meshgrid 
+        Arguments:
+            n_points: list, number of points in each dimension
+        Output:
+            grid: [ndim, nP] matrix of points, where nP = product(n_points)
+        """
+        return self._uniform_meshgrid(self.params.ndim,
+                                             self.params.domain_min,
+                                             self.params.domain_max,
+                                             n_points, self.device)
+    
+
+    def _uniform_meshgrid(self, ndim, domain_min, domain_max, n_points, device='cpu'):
+        #device = torch.device('cpu') if device=='cpu' else torch.device('cuda')
+        device = torch.device('cpu') if device=='cpu' else torch.device('cuda') if device=='cuda' \
+                                                                                    else torch.device('mps')
+        lin = [torch.linspace(domain_min[i], domain_max[i], n_points[i], 
+                            device=device) for i in range(ndim)]
+        mesh = torch.meshgrid(lin[::-1])
+        grid = torch.cat([g.reshape(1,-1) for g in mesh[::-1]], dim=0)
+        return grid
+
+
+    #%%
+    def _check_device(self, x):
+        """ Asssert that x is on the same device (cpu or gpu) as the class """
+        assert self.backend.check_device(x, self.device), '''Input is placed on 
+            device {0} but the class expects it to be on device {1}'''.format(
+            str(x.device), self.device)
+
+    def to(x, dtype=torch.float32, device=None):
+        if type(device)==str:
+            device = torch.device("cuda") if device=="gpu" else torch.device("cpu") if device=='cpu' \
+                                                                                    else torch.device('mps')
+        return torch.tensor(x, dtype=dtype, device=device)
+
+    #%%
+    def _check_input(self, tess_size, backend, device, 
+                     zero_boundary, volume_perservation, override):
+        """ Utility function used to check the input to the class.
+            Not meant to be called by the user. """
+        assert len(tess_size) > 0 and len(tess_size) <= 3, \
+            '''Transformer only supports 1D, 2D or 3D'''
+        assert type(tess_size) == list or type(tess_size) == tuple, \
+            '''Argument tess_size must be a list or tuple'''
+        assert all([type(e)==int for e in tess_size]), \
+            '''All elements of tess_size must be integers'''
+        assert all([e > 0 for e in tess_size]), \
+            '''All elements of tess_size must be positive'''
+        assert backend in ['numpy', 'tensorflow', 'pytorch'], \
+            '''Unknown backend, choose between 'numpy', 'tensorflow' or 'pytorch' '''
+        assert device in ['cpu', 'gpu', 'mps'], \
+            '''Unknown device, choose between 'cpu' or 'gpu' '''
+        if backend == 'numpy':
+            assert device == 'cpu', '''Cannot use gpu with numpy backend '''
+        assert type(zero_boundary) == bool, \
+            '''Argument zero_boundary must be True or False'''
+        assert type(volume_perservation) == bool, \
+            '''Argument volume_perservation must be True or False'''
+        assert type(override) == bool, \
+            '''Argument override must be True or False '''
 
 
     def __repr__(self):

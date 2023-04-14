@@ -30,21 +30,21 @@ class BatchIndependentMultitaskGPModel(gpytorch.models.ExactGP):
             #tasks, lengthscale, initialization = config.get_config_vals(['Tasks','Lengthscale','Initialization'])
             tasks, lengthscale, initialization = config.get_config_vals(['*/Tasks','*/Lengthscale','*/Initialization'])
 
-
+        self.device = torch.device( 'cpu' ) #torch.device( config.get_config_vals(['device'])[0] )
         #tasks = config.parserinfo('*/Tasks')
-        self.mean_module = gpytorch.means.ConstantMean(batch_shape=torch.Size([tasks]))
+        self.mean_module = gpytorch.means.ConstantMean(batch_shape=torch.Size([tasks]), device=self.device)#.to(self.device)
 
 
         self.covar_module = gpytorch.kernels.ScaleKernel(
             gpytorch.kernels.RBFKernel(  batch_shape=torch.Size([tasks]) ),#lengthscale_prior=lengthscale_prior, 
             #outputscale_prior=outputscale_prior,
-            batch_shape=torch.Size([tasks])
-        
-        )
+            batch_shape=torch.Size([tasks]),
+            device=self.device
+        )#.to(self.device)
         #import pdb; pdb.set_trace()
         self.covar_module.base_kernel.lengthscale =  lengthscale #config.parserinfo('*/Lengthscale')
         if isinstance(initialization,list):
-            self.mean_module.initialize(constant= torch.tensor(initialization).reshape(-1,1))
+            self.mean_module.initialize(constant= torch.tensor(initialization).reshape(-1,1).to(self.device) )
         else:
             self.mean_module.initialize(constant= initialization) #config.parserinfo('*/Initialization'))
         #self.mean_module.initialize(constant= initialization) #config.parserinfo('*/Initialization'))
@@ -58,11 +58,11 @@ class BatchIndependentMultitaskGPModel(gpytorch.models.ExactGP):
     '''
     
     def forward(self, x):
-        mean_x = self.mean_module(x)
+        mean_x = self.mean_module(x)#.to(self.device)
         #pdb.set_trace()
-        covar_x = self.covar_module(x)
+        covar_x = self.covar_module(x)#.to(self.device)
         return gpytorch.distributions.MultitaskMultivariateNormal.from_batch_mvn(
-            gpytorch.distributions.MultivariateNormal(mean_x, covar_x)
+            gpytorch.distributions.MultivariateNormal(mean_x, covar_x) 
         )
 
 
