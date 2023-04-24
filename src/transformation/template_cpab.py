@@ -27,7 +27,7 @@ class template_cpab(Cpab):
                         device = 'cpu', zero_boundary = True, 
                         volume_perservation = False, override = False):
 
-        super().__init__(tess_size, backend=backend, device='cpu', zero_boundary=zero_boundary, 
+        super().__init__(tess_size, backend=backend, device=device, zero_boundary=zero_boundary, 
                                     volume_perservation=volume_perservation, override=override)
 
         self.config = config
@@ -127,7 +127,7 @@ class template_cpab(Cpab):
 
     def _uniform_meshgrid(self, ndim, domain_min, domain_max, n_points, device='cpu'):
         #device = torch.device('cpu') if device=='cpu' else torch.device('cuda')
-        device = torch.device('cpu') if device=='cpu' else torch.device('cuda') if device=='cuda' \
+        device = torch.device('cpu') if device=='cpu' else torch.device('cuda') if device=='cuda' or device=='gpu' \
                                                                                     else torch.device('mps')
         lin = [torch.linspace(domain_min[i], domain_max[i], n_points[i], 
                             device=device) for i in range(ndim)]
@@ -145,7 +145,7 @@ class template_cpab(Cpab):
 
     def to(x, dtype=torch.float32, device=None):
         if type(device)==str:
-            device = torch.device("cuda") if device=="gpu" else torch.device("cpu") if device=='cpu' \
+            device = torch.device("cuda") if device=="gpu" or device=="cuda" else torch.device("cpu") if device=='cpu' \
                                                                                     else torch.device('mps')
         return torch.tensor(x, dtype=dtype, device=device)
 

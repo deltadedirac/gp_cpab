@@ -118,7 +118,7 @@ def plot_logos_probs(x1_trans, alphabets, **kargs): #folderpath = pathfolder, na
 
 
     alphabets_logo = [ i if i!='-' else 'X' for i in alphabets] 
-    x1_trans_logo_input = df_construction_aas([ x1_trans.detach().numpy() ], x1_trans.shape, alphabets_logo)
+    x1_trans_logo_input = df_construction_aas([ x1_trans.detach().cpu().numpy() ], x1_trans.shape, alphabets_logo)
     best = logomaker_plots.plotlogos(x1_trans_logo_input[x1_trans_logo_input.columns.tolist()] )
 
     return best

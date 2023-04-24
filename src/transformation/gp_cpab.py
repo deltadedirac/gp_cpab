@@ -18,7 +18,7 @@ class gp_cpab(template_cpab, gp_interpolation):
                         volume_perservation = False, override = False, **arggp):
         params = tuple()
         self.config = config
-        self.device = 'cpu'#device
+        self.device = device
 
         if 'argparser_gpdata' in arggp:
             self.constrain, self.tasks, self.interpolation_type,  self.option , lengthscale, initialization  = arggp['argparser_gpdata']
@@ -69,17 +69,22 @@ class gp_cpab(template_cpab, gp_interpolation):
 
         grid_no_expansion = self.grid
 
+        self.grid = self.backend.to(self.grid, device=self.device)
+        grid_no_expansion = self.backend.to(grid_no_expansion, device=self.device)
+        grid_t_no_expansion = self.transform_grid(grid_no_expansion, theta)
+
         ''' This line of code had to be change because the previous "torch.solve in expm.py" 
             is completely deprecated and unsuported for version 2.0, besides this last one
             is not suported by macOS'''
-        grid_t_no_expansion = self.transform_grid(grid_no_expansion.to(torch.device('cpu')), 
-                                                  theta.to(torch.device('cpu'))).to(torch.device(self.device))
+        #grid_t_no_expansion = self.transform_grid(grid_no_expansion.to(torch.device('cpu')), 
+        #                                          theta.to(torch.device('cpu'))).to(torch.device(self.device))
 
         if self.interpolation_type == 'linear':
             data_t = self.interpolate(data, grid_t_no_expansion, outsize)
             return (data_t, None)
         else:
-            data = data.to(torch.device(self.device))
+            #data = data.to(torch.device(self.device))
+            data = self.backend.to(data, device=self.device)
             data_t, sampled_data = self.batch_interpolate_GP_1D_multitask(data, grid_t_no_expansion, outsize)
             return data_t, sampled_data
 
