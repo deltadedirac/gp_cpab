@@ -23,6 +23,7 @@ class LossFunctionsAlternatives(nn.Module):
         self.L1Loss = nn.L1Loss()
         self.kl_div = nn.KLDivLoss(reduction='none')
         self.MSE = nn.MSELoss()
+        self.logGauss = nn.GaussianNLLLoss()
 
     def get_dictionaries_to_mask_data(self, c2i, i2c, i2i):
         self.c2i = c2i
@@ -48,6 +49,8 @@ class LossFunctionsAlternatives(nn.Module):
             self.loss = ( self.kl_div(input,target) + self.kl_div(target,input) ).sum()
         elif method == 'MSE':
             self.loss = self.MSE(input,target)
+        elif method == 'logGauss':
+            self.loss = self.logGauss(input,target, torch.ones(*input.shape, requires_grad=True))
         elif method == 'Soft_Label_KLD':
             log_probs = F.log_softmax(input,dim=-1)
             self.component_vals = self.kl_div(log_probs,target)

@@ -148,7 +148,14 @@ class template_cpab(Cpab):
             device = torch.device("cuda") if device=="gpu" or device=="cuda" else torch.device("cpu") if device=='cpu' \
                                                                                     else torch.device('mps')
         return torch.tensor(x, dtype=dtype, device=device)
-
+    
+    def cast_device(self,device_tag):
+        ''' convert the reference tag used on cpab for the ones enable in 
+            pytorch for using different devices like cpu, cuda, mps, etc'''
+        if type(device_tag)==str:
+                casted_device = "cuda" if device_tag=="gpu" or device_tag=="cuda" else "cpu" if device_tag=='cpu' \
+                                                                                    else 'mps'
+        return casted_device
     #%%
     def _check_input(self, tess_size, backend, device, 
                      zero_boundary, volume_perservation, override):
