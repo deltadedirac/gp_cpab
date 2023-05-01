@@ -26,8 +26,10 @@ class gp_interpolation:
         for i in range(0,batches):
             list_of_Multitask_GPs.append( BatchIndependentMultitaskGPModel(x[i], data_sampled[i], \
                                                                             self.likelihood_Multitask, \
-                                                                            self.config, self.args_gp_interpolation ) )
-            list_of_Multitask_Likelihood.append(self.likelihood_Multitask)
+                                                                            self.config, self.args_gp_interpolation )\
+                                                                            .to( self.cast_device( self.config.parserinfo('device')) )  )
+            list_of_Multitask_Likelihood.append(self.likelihood_Multitask\
+                                                              .to( self.cast_device( self.config.parserinfo('device')) ) )
 
         batch_model = IndependentModelList(*list_of_Multitask_GPs)
         batch_likelihood = LikelihoodList(*list_of_Multitask_Likelihood)
