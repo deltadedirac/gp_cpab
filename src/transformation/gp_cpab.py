@@ -34,6 +34,7 @@ class gp_cpab(template_cpab, gp_interpolation):
         #self.likelihood = gpytorch.likelihoods.MultitaskGaussianLikelihood(num_tasks = self.tasks, 
         #                                                                   noise_constraint = gpytorch.constraints.Interval(self.constrain[0],self.constrain[1]) )\
         #                                                                        .to( self.cast_device(self.device) )
+        '''This solution works'''
         self.likelihood = gpytorch.likelihoods.MultitaskGaussianLikelihood(num_tasks = self.tasks ,
                                                                            noise_prior = gpytorch.priors.NormalPrior(loc=0, scale=1e-4), 
                                                                            has_global_noise= False, 
