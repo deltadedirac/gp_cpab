@@ -31,10 +31,16 @@ class gp_cpab(template_cpab, gp_interpolation):
         template_cpab.__init__(self,tess_size, self.config, backend=backend, device=device, zero_boundary=zero_boundary, 
                                     volume_perservation=volume_perservation, override=override)
         
-        self.likelihood = gpytorch.likelihoods.MultitaskGaussianLikelihood(num_tasks = self.tasks, 
+        #self.likelihood = gpytorch.likelihoods.MultitaskGaussianLikelihood(num_tasks = self.tasks, 
+        #                                                                   noise_constraint = gpytorch.constraints.Interval(self.constrain[0],self.constrain[1]) )\
+        #                                                                        .to( self.cast_device(self.device) )
+        self.likelihood = gpytorch.likelihoods.MultitaskGaussianLikelihood(num_tasks = self.tasks ,
+                                                                           noise_prior = gpytorch.priors.NormalPrior(loc=0, scale=1e-4), 
+                                                                           has_global_noise= False, 
+                                                                           has_task_noise=True, 
                                                                            noise_constraint = gpytorch.constraints.Interval(self.constrain[0],self.constrain[1]) )\
                                                                                 .to( self.cast_device(self.device) )
-        
+
 
         gp_interpolation.__init__(self,self.likelihood, self.config, gp_setup_params=params)
 
