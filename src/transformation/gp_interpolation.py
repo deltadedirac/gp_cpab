@@ -90,7 +90,14 @@ class gp_interpolation:
         multiout_GP_Interpolator.eval()
         multiout_GP_likelihood.eval()
         test_x =  [i.flatten() for i in test_points]
-        with gpytorch.settings.fast_pred_var():
+
+        '''the inclusion of fast_pred_samples as well as fast_computation a.k.a Cholesky
+            was necessary to improve the speed performance of MOGP interpolator in the
+            transformation. Otherwise, we can switch to just fast_pred_var'''
+        with gpytorch.settings.fast_pred_var(True),\
+            gpytorch.settings.fast_pred_samples(True),\
+            gpytorch.settings.fast_computations(covar_root_decomposition=False, 
+                                            log_prob=False, solves=False):
             trans_data_distribution = multiout_GP_likelihood(*multiout_GP_Interpolator(*test_x))
             mean, posterior_samples, _lb, _ub = self.sampling_from_posterior(trans_data_distribution)
 
