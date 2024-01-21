@@ -94,13 +94,32 @@ class gp_interpolation:
         '''the inclusion of fast_pred_samples as well as fast_computation a.k.a Cholesky
             was necessary to improve the speed performance of MOGP interpolator in the
             transformation. Otherwise, we can switch to just fast_pred_var'''
-        with gpytorch.settings.fast_pred_var(True),\
+        
+        '''with gpytorch.settings.fast_pred_var(True),\
             gpytorch.settings.fast_pred_samples(True),\
             gpytorch.settings.fast_computations(covar_root_decomposition=False, 
                                             log_prob=False, solves=False):
+        '''
+            
+        ''' 
+            Since we are using a Multioutput-GP as a bank of independent
+            GPs for interpolating the states i.e. aminoacid channels, the
+            last option (deterministic_probes) seems suitable for getting
+            more stability in the convergence output value. That being said,
+            It will be given as default, but that could be changed in the
+            future
+        '''
+        with gpytorch.settings.fast_pred_var(True),\
+            gpytorch.settings.fast_pred_samples(True),\
+            gpytorch.settings.fast_computations(covar_root_decomposition=True, 
+                                            log_prob=False),\
+            gpytorch.settings.skip_posterior_variances(True),\
+            gpytorch.settings.max_cg_iterations(1000),\
+            gpytorch.settings.deterministic_probes(True):
+            
             trans_data_distribution = multiout_GP_likelihood(*multiout_GP_Interpolator(*test_x))
             mean, posterior_samples, _lb, _ub = self.sampling_from_posterior(trans_data_distribution)
-
+        
         return mean, posterior_samples, _lb, _ub
 
     def sampling_from_posterior(self, set_of_GP_distributions):
