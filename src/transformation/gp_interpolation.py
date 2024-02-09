@@ -108,13 +108,35 @@ class gp_interpolation:
             more stability in the convergence output value. That being said,
             It will be given as default, but that could be changed in the
             future
+
+            - Important Note: THe inclusion of skipping posterior variance into
+            the calculations for doing the regression, eliminate the uncertainty
+            bounds in order to speed up the diffeomorphic transformation when long
+            sequences are being aligning. This would affect the way to calculate the
+            posterior variance for 2.1_toy_example
         '''
+
+        '''
+        # This is in case of running 2.1-toy-example, because I need to include
+        the variance computation. Hope to improve the code of this section in next
+        versions.
+
+        with gpytorch.settings.fast_pred_var(True),\
+            gpytorch.settings.fast_pred_samples(True),\
+            gpytorch.settings.fast_computations(covar_root_decomposition=True, 
+                                            log_prob=False),\
+            gpytorch.settings.max_cg_iterations(3000),\
+            gpytorch.settings.deterministic_probes(True):
+            trans_data_distribution = multiout_GP_likelihood(*multiout_GP_Interpolator(*test_x))
+            mean, posterior_samples, _lb, _ub = self.sampling_from_posterior(trans_data_distribution)
+        '''
+        
         with gpytorch.settings.fast_pred_var(True),\
             gpytorch.settings.fast_pred_samples(True),\
             gpytorch.settings.fast_computations(covar_root_decomposition=True, 
                                             log_prob=False),\
             gpytorch.settings.skip_posterior_variances(True),\
-            gpytorch.settings.max_cg_iterations(1000),\
+            gpytorch.settings.max_cg_iterations(5000),\
             gpytorch.settings.deterministic_probes(True):
             
             trans_data_distribution = multiout_GP_likelihood(*multiout_GP_Interpolator(*test_x))
