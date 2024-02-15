@@ -124,18 +124,20 @@ class gp_interpolation:
         with gpytorch.settings.fast_pred_var(True),\
             gpytorch.settings.fast_pred_samples(True),\
             gpytorch.settings.fast_computations(covar_root_decomposition=True, 
-                                            log_prob=False),\
-            gpytorch.settings.max_cg_iterations(3000),\
+                                            log_prob=True),\
+            gpytorch.settings.max_cg_iterations(5000),\
             gpytorch.settings.deterministic_probes(True):
             trans_data_distribution = multiout_GP_likelihood(*multiout_GP_Interpolator(*test_x))
             mean, posterior_samples, _lb, _ub = self.sampling_from_posterior(trans_data_distribution)
+            
         '''
-        
+        # It is necessary in the future to include the possibility to
+        # enable/disable the posterior variance for calculations.
+        # Just include it into the constructor
         with gpytorch.settings.fast_pred_var(True),\
             gpytorch.settings.fast_pred_samples(True),\
             gpytorch.settings.fast_computations(covar_root_decomposition=True, 
-                                            log_prob=False),\
-            gpytorch.settings.skip_posterior_variances(True),\
+                                            log_prob=True),\
             gpytorch.settings.max_cg_iterations(5000),\
             gpytorch.settings.deterministic_probes(True):
             
