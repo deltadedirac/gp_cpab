@@ -138,6 +138,7 @@ class gp_interpolation:
             gpytorch.settings.fast_pred_samples(True),\
             gpytorch.settings.fast_computations(covar_root_decomposition=True, 
                                             log_prob=True),\
+            gpytorch.settings.skip_posterior_variances(True), \
             gpytorch.settings.max_cg_iterations(5000),\
             gpytorch.settings.deterministic_probes(True):
             
