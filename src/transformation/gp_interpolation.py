@@ -14,8 +14,10 @@ class gp_interpolation:
         self.likelihood_Multitask = likelihood_Multitask
 
         self.args_gp_interpolation = ( [] , args_gp['gp_setup_params'] )[ 'gp_setup_params' in args_gp ]
+        self.skip_posterior_variance = True
 
-
+    def set_posterior_variance(self, flag):
+        self.skip_posterior_variance = flag
 
     def sets_MultioutputGP_per_batches(self, x, data_sampled, batches):
 
@@ -75,15 +77,15 @@ class gp_interpolation:
         trans_data, sampled_data, \
                 self.lower,self.upper  = self.predict_operation(x_trans, batch_Multitask_model, batch_multitask_likelihood  )
         cc = trans_data.flatten()
-        sampled_data = sampled_data.flatten()
+        #sampled_data = sampled_data.flatten()
 
         # Reshape
         new_data = torch.reshape(cc, (n_batch, out_width, n_channels))
-        sampled_data = torch.reshape(sampled_data, (n_batch, out_width, n_channels))
+        #sampled_data = torch.reshape(sampled_data, (n_batch, out_width, n_channels))
         new_data = new_data.permute(0, 2, 1)
-        sampled_data = sampled_data.permute(0, 2, 1)
+        #sampled_data = sampled_data.permute(0, 2, 1)
 
-        return new_data.contiguous(), sampled_data
+        return new_data.contiguous(), None#sampled_data
 
 
     def predict_operation(self, test_points, multiout_GP_Interpolator, multiout_GP_likelihood ):
@@ -91,17 +93,11 @@ class gp_interpolation:
         multiout_GP_likelihood.eval()
         test_x =  [i.flatten() for i in test_points]
 
-        '''the inclusion of fast_pred_samples as well as fast_computation a.k.a Cholesky
-            was necessary to improve the speed performance of MOGP interpolator in the
-            transformation. Otherwise, we can switch to just fast_pred_var'''
-        
-        '''with gpytorch.settings.fast_pred_var(True),\
-            gpytorch.settings.fast_pred_samples(True),\
-            gpytorch.settings.fast_computations(covar_root_decomposition=False, 
-                                            log_prob=False, solves=False):
         '''
-            
-        ''' 
+            the inclusion of fast_pred_samples as well as fast_computation a.k.a Cholesky
+            was necessary to improve the speed performance of MOGP interpolator in the
+            transformation. Otherwise, we can switch to just fast_pred_var
+
             Since we are using a Multioutput-GP as a bank of independent
             GPs for interpolating the states i.e. aminoacid channels, the
             last option (deterministic_probes) seems suitable for getting
@@ -114,9 +110,8 @@ class gp_interpolation:
             bounds in order to speed up the diffeomorphic transformation when long
             sequences are being aligning. This would affect the way to calculate the
             posterior variance for 2.1_toy_example
-        '''
 
-        '''
+
         # This is in case of running 2.1-toy-example, because I need to include
         the variance computation. Hope to improve the code of this section in next
         versions.
@@ -134,13 +129,15 @@ class gp_interpolation:
         # It is necessary in the future to include the possibility to
         # enable/disable the posterior variance for calculations.
         # Just include it into the constructor
+
         with gpytorch.settings.fast_pred_var(True),\
             gpytorch.settings.fast_pred_samples(True),\
             gpytorch.settings.fast_computations(covar_root_decomposition=True, 
                                             log_prob=True),\
-            gpytorch.settings.skip_posterior_variances(True), \
+            gpytorch.settings.skip_posterior_variances(self.skip_posterior_variance), \
             gpytorch.settings.max_cg_iterations(5000),\
-            gpytorch.settings.deterministic_probes(True):
+            gpytorch.settings.deterministic_probes(True),\
+            gpytorch.settings.trace_mode(True):
             
             trans_data_distribution = multiout_GP_likelihood(*multiout_GP_Interpolator(*test_x))
             mean, posterior_samples, _lb, _ub = self.sampling_from_posterior(trans_data_distribution)
@@ -154,12 +151,12 @@ class gp_interpolation:
 
         for i in set_of_GP_distributions:
             list_GP_means.append(i.mean)
-            list_GP_Posterior_samples.append(i.rsample())
+            #list_GP_Posterior_samples.append(i.rsample())
             l,u =i.confidence_region()
             list_GP_lowerbound.append(l)
             list_GP_upperbound.append(u)
 
-        return torch.cat(list_GP_means), torch.cat(list_GP_Posterior_samples), \
+        return torch.cat(list_GP_means), list_GP_Posterior_samples,\
                                     torch.cat(list_GP_lowerbound), torch.cat(list_GP_upperbound)
 
 

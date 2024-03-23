@@ -96,6 +96,6 @@ class gp_cpab(template_cpab, gp_interpolation):
             #data = data.to(torch.device(self.device))
             data = self.backend.to(data, device=self.device)
             data_t, sampled_data = self.batch_interpolate_GP_1D_multitask(data, grid_t_no_expansion, outsize)
-            return data_t, sampled_data
+            return data_t, None#sampled_data
 
 
