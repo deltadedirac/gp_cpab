@@ -1,8 +1,9 @@
 import torch, gpytorch
-import pdb, math, os, gc
+import pdb, ipdb, math, os, gc
 from tqdm import tqdm
-#from .gp_interpolation_old import gp_interpolation
-from .gp_interpolation import gp_interpolation
+
+#from .gp_interpolation import gp_interpolation
+from .gp_interpolation_fast_3 import gp_interpolation
 
 from .template_cpab import template_cpab
 #from .libcpab.libcpab import *
@@ -10,8 +11,8 @@ from .configManager import configManager
 
 
 
+#class gp_cpab(template_cpab, gp_interpolation):
 class gp_cpab(template_cpab, gp_interpolation):
-
 
     def __init__(self, tess_size, config, backend = 'numpy',
                         device = 'cpu', zero_boundary = True, 
@@ -69,7 +70,7 @@ class gp_cpab(template_cpab, gp_interpolation):
         # This applied to Standard CPAB, because of interpolation object that it
         # is used inside of it.
         batch_size = data.shape[0]
-        #pdb.set_trace()
+        #ipdb.set_trace()
 
         self._check_type(data); self._check_device(data)
         self._check_type(theta); self._check_device(theta)

@@ -24,7 +24,7 @@ class gp_interpolation:
         list_of_Multitask_GPs = []
         list_of_Multitask_Likelihood = []
         #self.constrain = self.config.parserinfo('*/noise_constraint')
-
+        #import ipdb; ipdb.set_trace()
         for i in range(0,batches):
             list_of_Multitask_GPs.append( BatchIndependentMultitaskGPModel(x[i], data_sampled[i], \
                                                                             self.likelihood_Multitask, \
@@ -74,6 +74,7 @@ class gp_interpolation:
         batch_Multitask_model, batch_multitask_likelihood = self.sets_MultioutputGP_per_batches(x, data_sampled, n_batch)
 
         # To get distribution over Posteriors
+        #import ipdb; ipdb.set_trace()
         trans_data, sampled_data, \
                 self.lower,self.upper  = self.predict_operation(x_trans, batch_Multitask_model, batch_multitask_likelihood  )
         cc = trans_data.flatten()

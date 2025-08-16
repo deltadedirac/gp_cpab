@@ -23,6 +23,7 @@ class _notcompiled:
         self.backward = f
 
 #%%
+import ipdb; ipdb.set_trace()
 _dir = get_dir(__file__)
 _verbose = False # TODO: set this flag in the main class, maybe
 # Jit compile cpu source

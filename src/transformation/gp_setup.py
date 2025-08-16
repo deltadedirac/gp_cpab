@@ -69,6 +69,7 @@ class BatchIndependentMultitaskGPModel(gpytorch.models.ExactGP):
         return casted_device
     
     def forward(self, x):
+        #import ipdb; ipdb.set_trace()
         mean_x = self.mean_module(x)#.to(self.device)
         #pdb.set_trace()
         covar_x = self.covar_module(x)#.to(self.device)
